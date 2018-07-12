@@ -119,7 +119,8 @@ class BitMEXWebsocket:
         self.wst.daemon = True
         self.wst.start()
         self.logger.debug("Started thread")
-
+        
+        self.__wait_for_account()
         # Wait for connect before continuing
         conn_timeout = 5
         while not self.ws.sock or not self.ws.sock.connected and conn_timeout:
